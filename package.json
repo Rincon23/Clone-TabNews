@@ -4,7 +4,8 @@
   "description": "Repositório voltado ao aprendizado do Curso.dev do filipe deschamps.",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run services:up && npm run services:wait:database && npm run migrations:up && next dev",
+    "dev": "node infra/scripts/dev.js",
+    "postdev": "npm run services:stop",
     "test": "npm run services:up && concurrently --names next,jest --hide next --kill-others -k --success command-jest \"next dev\" \"jest --runInBand --verbose\"",
     "posttest": "npm run services:stop",
     "test:watch": "jest --watchAll --runInBand",
